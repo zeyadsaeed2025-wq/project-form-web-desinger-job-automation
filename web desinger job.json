@@ -1,0 +1,233 @@
+﻿{
+  "name": "web desinger job",
+  "type": "SHARED",
+  "summary": "",
+  "description": "",
+  "tags": [],
+  "blogUrl": "",
+  "metadata": {
+    "externalId": "kXMXYq6O5aVZXswthk04n"
+  },
+  "author": "zeyad saeed",
+  "categories": [],
+  "pieces": [
+    "@activepieces/piece-forms",
+    "@activepieces/piece-ai",
+    "@activepieces/piece-gmail"
+  ],
+  "flows": [
+    {
+      "displayName": "web desinger job",
+      "trigger": {
+        "name": "trigger",
+        "valid": true,
+        "displayName": "user data",
+        "nextAction": {
+          "name": "step_1",
+          "skip": false,
+          "type": "PIECE",
+          "valid": true,
+          "settings": {
+            "input": {
+              "model": "anthropic/claude-opus-4.8",
+              "prompt": "write an email for user {{trigger['output']['fullName']}} and he want to join web designer job and he replay he want to join us becouse {{trigger['output']['whyYouWantToJoinUs?']}} so replay him if he will accepted or not",
+              "provider": {
+                "configId": "azJpQJJX2ecSmLS1JtSdO",
+                "provider": "activepieces"
+              },
+              "webSearch": true,
+              "maxOutputTokens": 2000,
+              "webSearchOptions": {
+                "maxUses": 5
+              }
+            },
+            "pieceName": "@activepieces/piece-ai",
+            "actionName": "askAi",
+            "sampleData": {},
+            "pieceVersion": "0.11.0",
+            "propertySettings": {
+              "model": {
+                "type": "MANUAL"
+              },
+              "prompt": {
+                "type": "MANUAL"
+              },
+              "provider": {
+                "type": "MANUAL"
+              },
+              "webSearch": {
+                "type": "MANUAL"
+              },
+              "creativity": {
+                "type": "MANUAL"
+              },
+              "conversationKey": {
+                "type": "MANUAL"
+              },
+              "maxOutputTokens": {
+                "type": "MANUAL"
+              },
+              "webSearchOptions": {
+                "type": "MANUAL",
+                "schema": {
+                  "maxUses": {
+                    "type": "NUMBER",
+                    "required": false,
+                    "description": "For OpenRouter/Activepieces, this maps to OpenRouter web plugin max_results (1-10). Default is 5.",
+                    "displayName": "Max Web Search Uses",
+                    "defaultValue": 5
+                  }
+                }
+              }
+            },
+            "errorHandlingOptions": {
+              "retryOnFailure": {
+                "value": false
+              },
+              "continueOnFailure": {
+                "value": false
+              }
+            }
+          },
+          "nextAction": {
+            "name": "step_2",
+            "skip": false,
+            "type": "PIECE",
+            "valid": true,
+            "settings": {
+              "input": {
+                "cc": [],
+                "bcc": [],
+                "auth": "{{connections['5BIbCL8TyOauagFHiL81z']}}",
+                "body": "{{step_1['output']}}",
+                "draft": false,
+                "subject": "replay for applaying to webdesinger position",
+                "receiver": [
+                  "{{trigger['output']['email']}}"
+                ],
+                "reply_to": [],
+                "body_type": "plain_text",
+                "attachments": []
+              },
+              "pieceName": "@activepieces/piece-gmail",
+              "actionName": "send_email",
+              "sampleData": {},
+              "pieceVersion": "0.18.1",
+              "propertySettings": {
+                "cc": {
+                  "type": "MANUAL"
+                },
+                "bcc": {
+                  "type": "MANUAL"
+                },
+                "body": {
+                  "type": "MANUAL"
+                },
+                "from": {
+                  "type": "MANUAL"
+                },
+                "draft": {
+                  "type": "MANUAL"
+                },
+                "subject": {
+                  "type": "MANUAL"
+                },
+                "receiver": {
+                  "type": "MANUAL"
+                },
+                "reply_to": {
+                  "type": "MANUAL"
+                },
+                "body_type": {
+                  "type": "MANUAL"
+                },
+                "attachments": {
+                  "type": "MANUAL"
+                },
+                "in_reply_to": {
+                  "type": "MANUAL"
+                },
+                "sender_name": {
+                  "type": "MANUAL"
+                }
+              },
+              "errorHandlingOptions": {
+                "retryOnFailure": {
+                  "value": false
+                },
+                "continueOnFailure": {
+                  "value": false
+                }
+              }
+            },
+            "displayName": "Send Email",
+            "lastUpdatedDate": "2026-10-23T18:14:55.553Z"
+          },
+          "displayName": "Ask AI",
+          "lastUpdatedDate": "2026-10-23T18:11:37.645Z"
+        },
+        "lastUpdatedDate": "2026-10-23T18:05:26.103Z",
+        "type": "PIECE_TRIGGER",
+        "settings": {
+          "sampleData": {},
+          "propertySettings": {
+            "about": {
+              "type": "MANUAL"
+            },
+            "inputs": {
+              "type": "MANUAL"
+            },
+            "response": {
+              "type": "MANUAL"
+            },
+            "waitForResponse": {
+              "type": "MANUAL"
+            }
+          },
+          "pieceName": "@activepieces/piece-forms",
+          "pieceVersion": "0.5.0",
+          "triggerName": "form_submission",
+          "input": {
+            "inputs": [
+              {
+                "type": "text",
+                "required": true,
+                "description": "",
+                "displayName": "Full Name"
+              },
+              {
+                "type": "text",
+                "required": true,
+                "description": "",
+                "displayName": "Email"
+              },
+              {
+                "type": "text",
+                "required": true,
+                "description": "",
+                "displayName": "Phone Number"
+              },
+              {
+                "type": "text",
+                "required": true,
+                "description": "",
+                "displayName": "University"
+              },
+              {
+                "type": "text",
+                "required": true,
+                "description": "",
+                "displayName": "why you want to join us?"
+              }
+            ],
+            "waitForResponse": false
+          }
+        }
+      },
+      "valid": true,
+      "schemaVersion": "28",
+      "notes": []
+    }
+  ],
+  "status": "PUBLISHED"
+}
